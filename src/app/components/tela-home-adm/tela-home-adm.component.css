@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.admin-simple {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f4f8;
+  padding: 20px;
+}
+
+.admin-content {
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+.admin-content h1 {
+  color: #1a365d;
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
+  font-weight: 600;
+}
+
+.simple-cards {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+.simple-card {
+  background-color: white;
+  border-radius: 12px;
+  width: 300px;
+  padding: 3rem 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  border: 2px solid #e2e8f0;
+}
+
+.simple-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-color: #4299e1;
+}
+
+.simple-card h2 {
+  color: #2b6cb0;
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.simple-arrow {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  font-size: 2rem;
+  color: #4299e1;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.simple-card:hover .simple-arrow {
+  transform: translateX(10px);
+}
+
+.simple-back {
+  background-color: #2b6cb0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 2rem;
+}
+
+.simple-back:hover {
+  background-color: #2c5282;
+  transform: translateY(-3px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .simple-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .admin-content h1 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .simple-card {
+    width: 100%;
+    max-width: 350px;
+    padding: 2.5rem 2rem;
+  }
+  
+  .simple-card h2 {
+    font-size: 2rem;
+  }
+  
+  .simple-back {
+    font-size: 1.3rem;
+    padding: 0.8rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-content h1 {
+    font-size: 2.2rem;
+  }
+  
+  .simple-card h2 {
+    font-size: 1.8rem;
+  }
+  
+  .simple-arrow {
+    font-size: 1.5rem;
+  }
+}

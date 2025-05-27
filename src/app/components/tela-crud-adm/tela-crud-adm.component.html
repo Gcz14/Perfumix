@@ -1,0 +1,90 @@
+<section class="produto-container">
+  <div class="produto-form">
+    <h1>Cadastro de Produto</h1>
+    <form #form="ngForm" (ngSubmit)="salvarOuEditarProduto()" novalidate>
+
+      <!-- Formulário para adicionar produto -->
+      <div *ngIf="!modoEdicao" class="form-group">
+        <input [(ngModel)]="produtoNovo.nome" name="nome" placeholder="Nome do produto" required #nome="ngModel" />
+        <div *ngIf="nome.invalid && nome.touched" class="error-message">Obrigatório</div>
+
+        <input [(ngModel)]="produtoNovo.descricao" name="descricao" placeholder="Descrição" required #descricao="ngModel" />
+        <div *ngIf="descricao.invalid && descricao.touched" class="error-message">Obrigatório</div>
+
+        <input 
+          [(ngModel)]="produtoNovo.preco" 
+          name="preco" 
+          type="text" 
+          appCurrencyMask 
+          placeholder="Preço" 
+          required 
+          [min]="0.01" 
+          pattern="^\d+(\.\d{1,2})?$" 
+          #preco="ngModel" 
+        />
+        <div *ngIf="preco.invalid && preco.touched" class="error-message">Obrigatório</div>
+        <div *ngIf="preco.value <= 0 && preco.touched" class="error-message">Deve ser maior que zero</div>
+
+        <input type="file" (change)="selecionarImagem($event)" />
+
+        <button type="submit" class="btn-primary" [disabled]="form.invalid || preco.value <= 0">Adicionar Produto</button>
+      </div>
+
+      <!-- Formulário para editar produto -->
+      <div *ngIf="modoEdicao" class="form-group">
+        <input [(ngModel)]="produtoParaEditar!.nome" name="editNome" placeholder="Nome do produto" required #editNome="ngModel" />
+        <div *ngIf="editNome.invalid && editNome.touched" class="error-message">Obrigatório</div>
+
+        <input [(ngModel)]="produtoParaEditar!.descricao" name="editDesc" placeholder="Descrição" required #editDesc="ngModel" />
+        <div *ngIf="editDesc.invalid && editDesc.touched" class="error-message">Obrigatório</div>
+
+        <input 
+          [(ngModel)]="produtoParaEditar!.preco" 
+          name="editPreco" 
+          type="text" 
+          appCurrencyMask 
+          placeholder="Preço" 
+          required 
+          [min]="0.01" 
+          pattern="^\d+(\.\d{1,2})?$" 
+          #editPreco="ngModel" 
+        />
+        <div *ngIf="editPreco.invalid && editPreco.touched" class="error-message">Obrigatório</div>
+        <div *ngIf="editPreco.value <= 0 && editPreco.touched" class="error-message">Deve ser maior que zero.</div>
+
+        <input type="file" (change)="selecionarImagemEditando($event)" />
+
+        <button type="submit" class="btn-primary" [disabled]="form.invalid || editPreco.value <= 0">Salvar</button>
+        <button type="button" class="btn-secondary" (click)="cancelar()">Cancelar</button>
+      </div>
+
+    </form>
+    <button routerLink="/tela-home-adm" class="btn-exit">SAIR</button>
+  </div>
+
+  <!-- Lista de produtos -->
+  <div class="produto-lista">
+    <h1>Lista de Produtos</h1>
+    <table class="produto-table">
+      <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Preço</th>
+        <th>Imagem</th>
+        <th>Ações</th>
+      </tr>
+      <tr *ngFor="let item of listaProdutos">
+        <td>{{ item.nome }}</td>
+        <td>{{ item.descricao }}</td>
+        <td>R$ {{ item.preco }}</td>
+        <td>
+          <img *ngIf="item.imagem" [src]="item.imagem" alt="Imagem do produto" class="produto-imagem">
+        </td>
+        <td>
+          <button class="btn-edit" (click)="apertouEditar(item)">Editar</button>
+          <button class="btn-delete" (click)="apagarProduto(item.id!)">Excluir</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</section>

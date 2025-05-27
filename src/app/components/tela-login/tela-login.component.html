@@ -1,0 +1,18 @@
+<div class="login-container">
+  <div class="login-box">
+    <h1>Login</h1>
+
+    <div class="login-form">
+      <input type="email" placeholder="E-mail" [(ngModel)]="email" required />
+      <input type="password" placeholder="Senha" [(ngModel)]="senha" required />
+
+      <p class="forgot-password">Esqueceu a senha? <span>Clique aqui</span></p>
+
+      <div class="login-buttons">
+        <button class="login-btn" (click)="login()">ENTRAR</button>
+        <button class="register-btn" routerLink="/tela-cadastro">CADASTRAR</button>
+        <button class="back-btn" routerLink="">VOLTAR</button>
+      </div>
+    </div>
+  </div>
+</div>

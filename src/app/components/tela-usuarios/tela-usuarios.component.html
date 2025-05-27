@@ -1,0 +1,45 @@
+<section class="parteUsuarios">
+  <div class="editor">
+    <h1>Cadastrar - Usuários</h1>
+    
+    <div class="left">
+      <div *ngIf="!modoEdicao">
+        <input [(ngModel)]="novoUsuario.nome" placeholder="Nome do usuário" />
+        <input [(ngModel)]="novoUsuario.email" placeholder="Email" />
+        <input [(ngModel)]="novoUsuario.senha" type="password" placeholder="Senha" />
+        <button (click)="salvarOuEditar()">Adicionar Usuário</button>
+      </div>
+
+      <div *ngIf="modoEdicao">
+        <input [(ngModel)]="usuarioParaEditar!.nome" placeholder="Nome do usuário" />
+        <input [(ngModel)]="usuarioParaEditar!.email" placeholder="Email" />
+        <input [(ngModel)]="usuarioParaEditar!.senha" type="password" placeholder="Senha" />
+        <button (click)="salvarOuEditar()">Salvar</button>
+        <button (click)="cancelar()">Cancelar</button>
+      </div>
+    </div>
+
+    <button routerLink="">SAIR</button>
+  </div>
+
+  <div class="osUsuarios">
+    <h1>Adm - Funcionários</h1>
+    <table>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Senha</th>
+        <th>Ações</th>
+      </tr>
+      <tr *ngFor="let u of listaUsuarios">
+        <td>{{ u.nome }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.senha }}</td>
+        <td>
+          <button (click)="apertouEditar(u)">Editar</button>
+          <button (click)="apagarUsuario(u.id!)">Excluir</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</section>

@@ -1,0 +1,98 @@
+<button class="btn-login" routerLink="/tela-login">
+    Login
+</button>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>PerfuMix</h1>
+        <p>A sofisticação em perfume que você merece</p>
+        <button class="btn-hero">Explorar Coleção</button>
+    </div>
+    <div class="hero-decoration"></div>
+</section>
+
+<section class="destaque">
+    <div class="container">
+        <h2>Perfumes em Destaque</h2>
+
+        <div class="carrossel-wrapper">
+            <div class="carrossel">
+                <div *ngFor="let produto of produtos" class="produto">
+                    <img *ngIf="produto.imagem" [src]="produto.imagem" alt="{{ produto.nome }}"
+                        class="produto-imagem" />
+                    <div class="produto-nome">{{ produto.nome }}</div>
+                    <div class="produto-preco">R$ {{ produto.preco }}</div>
+                    <div class="produto-botoes">
+                        <button class="btn btn-adicionar" routerLink="/tela-carrinho-com-produto"
+                            routerLink="/tela-carrinho-com-produto">ADICIONAR</button>
+                        <button class="btn btn-comprar" routerLink="/tela-produto-unico">VER MAIS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="sobre">
+    <div class="container">
+        <div class="sobre-conteudo">
+            <h2>Sobre a PerfuMix</h2>
+            <p>Há mais de uma década no mercado de fragrâncias, a PerfuMix se consolidou como referência em perfumes de
+                alta qualidade. Oferecemos produtos com sofisticação e elegância para todos os estilos, desde
+                fragrâncias clássicas até as mais modernas tendências do mercado internacional.</p>
+            <div class="sobre-stats">
+                <div class="stat">
+                    <i class="fas fa-award"></i>
+                    <h3>10+ Anos</h3>
+                    <p>De experiência</p>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-heart"></i>
+                    <h3>50k+</h3>
+                    <p>Clientes satisfeitos</p>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-star"></i>
+                    <h3>500+</h3>
+                    <p>Fragrâncias únicas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contato">
+    <div class="container">
+        <h2>Fale Conosco</h2>
+        <div class="contato-info">
+            <div class="contato-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <h3>Email</h3>
+                    <p>contato&#64;perfumix.com</p>
+                </div>
+            </div>
+            <div class="contato-item">
+                <i class="fab fa-whatsapp"></i>
+                <div>
+                    <h3>WhatsApp</h3>
+                    <p>(11) 91234-5678</p>
+                </div>
+            </div>
+            <div class="contato-item">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <h3>Horário</h3>
+                    <p>Seg à Sex: 9h às 18h</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2025 PerfuMix. Todos os direitos reservados.</p>
+    </div>
+</footer>
